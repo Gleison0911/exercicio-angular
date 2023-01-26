@@ -3,7 +3,7 @@ import Router from "@koa/router";
 import { database } from "../../configs/database.mjs";
 
 export const listGabinetes = (q) =>
-  database("gabinetes").select().whereLike("nome", `%${q}%`);
+  database("gabinetes").select().whereLike("varas_id", `%${q}%`);
 
 export const findGabinete = (id) =>
   database("gabinetes").select().where({ id }).first();
