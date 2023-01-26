@@ -16,22 +16,24 @@
           <tr>
             <th class="col-2">#</th>
             <th class="col-4">Nome</th>
+            <th class="col-2">Varas ID</th>
             <th class="col-2">Editar</th>
             <th class="col-2">Excluir</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-s>
+        <ng-template pTemplate="body" let-v>
           <tr>
-            <td>{{s.id}}</td>
-            <td>{{s.nome}}</td>
+            <td>{{v.id}}</td>
+            <td>{{v.nome}}</td>
+            <td>{{v.varas_id}}</td>
             <td class="p-3">
               <button pButton pRipple type="button" icon="pi pi-pencil"
                 class="p-button-rounded p-button-outlined p-button-warning"
-                (click)="edit(s.id);  showDialog()"></button>
+                (click)="edit(v.id);  showDialog()"></button>
             </td>
             <td class="p-3">
               <button pButton pRipple type="button" icon="pi pi-trash"
-                class="p-button-rounded p-button-danger p-button-outlined" (click)="delete(s.id)"></button>
+                class="p-button-rounded p-button-danger p-button-outlined" (click)="delete(v.id)"></button>
             </td>
           </tr>
         </ng-template>
@@ -40,7 +42,7 @@
   </div>
 </section>
 
-<p-dialog [(visible)]="display" [transitionOptions]="'350ms'" [style]="{width: '30vw', height: '25em'}">
+<p-dialog [(visible)]="display" [transitionOptions]="'350ms'" [style]="{width: '30vw', height: '30em'}">
   <ng-template pTemplate="header">
     <h2> Dados cadastrais </h2>
   </ng-template>
@@ -55,6 +57,12 @@
         <span class="p-float-label my-4">
           <input type="text" class="w-full" pInputText id="nome" name="nome" formControlName="nome" placeholder="Nome">
           <label for="float-input"> Nome </label>
+        </span>
+
+        <span class="p-float-label my-4">
+          <input type="text" class="w-full" pInputText id="varas_id" name="varas_id" formControlName="varas_id"
+            placeholder="setores_id">
+          <label for="float-input"> Varas ID </label>
         </span>
       </form>
     </div>

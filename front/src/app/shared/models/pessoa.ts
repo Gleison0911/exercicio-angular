@@ -1,4 +1,5 @@
 export interface Pessoa {
-  id?: number;
+  id?: number|null;
   nome: string;
+  perfis_id: number;
 }

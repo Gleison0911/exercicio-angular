@@ -3,24 +3,24 @@ import { Vara } from 'src/app/shared/models/vara';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/shared/services/crud.service';
 import { MessageService } from 'primeng/api';
-import { Setor } from 'src/app/shared/models';
 
 @Component({
-  selector: 'app-setores',
-  templateUrl: './setores.component.html',
-  styleUrls: ['./setores.component.scss'],
+  selector: 'app-varas',
+  templateUrl: './varas.component.html',
+  styleUrls: ['./varas.component.scss'],
 })
-export class SetoresComponent {
-  public items: Setor[];
+export class VarasComponent {
+  public items: Vara[];
   public display: boolean = false;
 
   public formData = new FormGroup({
     id: new FormControl({ value: null, disabled: true }),
     nome: new FormControl('', Validators.required),
+    setores_id: new FormControl(null, Validators.required),
   });
 
   constructor(private api: CrudService, public messageService: MessageService) {
-    this.api.entity = 'setores';
+    this.api.entity = 'varas';
     this.items = [];
   }
 
@@ -47,6 +47,7 @@ export class SetoresComponent {
     this.formData.setValue({
       id: result.id,
       nome: result.nome,
+      setores_id: result.setores_id,
     });
   }
 

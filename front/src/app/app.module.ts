@@ -8,14 +8,21 @@ import { LoginComponent } from './pages/login/login.component';
 import { PessoasComponent } from './pages/pessoas/pessoas.component';
 import { SetoresComponent } from './pages/setores/setores.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import {TabMenuModule} from "primeng/tabmenu";
-import {TableModule} from "primeng/table";
-import {SplitButtonModule} from "primeng/splitbutton";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {SidebarModule} from "primeng/sidebar";
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TableModule } from 'primeng/table';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarModule } from 'primeng/sidebar';
 import { SearchboxComponent } from './shared/searchbox/searchbox.component';
-import {InputTextModule} from "primeng/inputtext";
-import {FormsModule} from "@angular/forms";
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VarasComponent } from './pages/varas/varas.component';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { PaginatorModule } from 'primeng/paginator';
+import { GabinetesComponent } from './pages/gabinetes/gabinetes.component';
+import { LotacoesComponent } from './pages/lotacoes/lotacoes.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +32,9 @@ import {FormsModule} from "@angular/forms";
     SetoresComponent,
     SidebarComponent,
     SearchboxComponent,
+    VarasComponent,
+    GabinetesComponent,
+    LotacoesComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +46,13 @@ import {FormsModule} from "@angular/forms";
     SplitButtonModule,
     SidebarModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    ReactiveFormsModule,
+    ToastModule,
+    PaginatorModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [MessageService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

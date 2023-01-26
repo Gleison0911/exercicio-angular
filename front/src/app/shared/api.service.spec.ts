@@ -27,7 +27,7 @@ describe('ApiService', () => {
         expect(status).toEqual("online");
         done();
       })
-    
+
     httpMock.expectOne(
       `${environment.apiUrl}status`
     ).flush("online");

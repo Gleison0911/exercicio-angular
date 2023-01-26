@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.box {
+  // margin: 2em;
+  display: flex;
+  box-shadow: 0 0 7px 0px #e9e9e9;
+
+  .grow {
+    flex-grow: 1;
+  }
+}

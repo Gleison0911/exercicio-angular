@@ -26,4 +26,10 @@ describe('SearchboxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should doSearch', () => {
+    component.text = '';
+    component.doSearch();
+    expect(component).toBeTruthy();
+  });
 });

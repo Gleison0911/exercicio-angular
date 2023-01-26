@@ -1,8 +1,5 @@
-.box {
-  margin: 2em;
-  display: flex;
-
-  .grow {
-    flex-grow: 1;
-  }
+.p-buttonset {
+  position: absolute;
+  z-index: 0;
+  right: 3em;
 }

@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
-import { Vara } from 'src/app/shared/models/vara';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/shared/services/crud.service';
 import { MessageService } from 'primeng/api';
-import { Setor } from 'src/app/shared/models';
+import { Gabinete } from 'src/app/shared/models/gabinete';
 
 @Component({
-  selector: 'app-setores',
-  templateUrl: './setores.component.html',
-  styleUrls: ['./setores.component.scss'],
+  selector: 'app-lotacoes',
+  templateUrl: './lotacoes.component.html',
+  styleUrls: ['./lotacoes.component.scss'],
 })
-export class SetoresComponent {
-  public items: Setor[];
+export class LotacoesComponent {
+  public items: Gabinete[];
   public display: boolean = false;
 
   public formData = new FormGroup({
     id: new FormControl({ value: null, disabled: true }),
-    nome: new FormControl('', Validators.required),
+    pessoas_id: new FormControl(null, Validators.required),
+    gabinetes_id: new FormControl(null, Validators.required),
   });
 
   constructor(private api: CrudService, public messageService: MessageService) {
-    this.api.entity = 'setores';
+    this.api.entity = 'lotacoes';
     this.items = [];
   }
 
@@ -46,7 +46,8 @@ export class SetoresComponent {
     let result: any = await this.api.findOne(item).toPromise();
     this.formData.setValue({
       id: result.id,
-      nome: result.nome,
+      pessoas_id: result.pessoas_id,
+      gabinetes_id: result.gabinetes_id,
     });
   }
 

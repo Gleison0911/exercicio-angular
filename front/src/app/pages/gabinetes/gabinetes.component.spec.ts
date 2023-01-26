@@ -1,19 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SetoresComponent } from './setores.component';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { SearchboxComponent } from '../../shared/searchbox/searchbox.component';
-import { TableModule } from 'primeng/table';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CrudService } from 'src/app/shared/services/crud.service';
-import { MessageService } from 'primeng/api';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MessageService } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { SearchboxComponent } from 'src/app/shared/searchbox/searchbox.component';
+import { CrudService } from 'src/app/shared/services/crud.service';
+import { GabinetesComponent } from './gabinetes.component';
 
-describe('SetoresComponent', () => {
-  let component: SetoresComponent;
-  let fixture: ComponentFixture<SetoresComponent>;
+describe('GabinetesComponent', () => {
+  let component: GabinetesComponent;
+  let fixture: ComponentFixture<GabinetesComponent>;
+  let service: CrudService;
+  var originalTimeout;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,16 +24,17 @@ describe('SetoresComponent', () => {
         TableModule,
         InputTextModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
       ],
-      declarations: [SetoresComponent, SearchboxComponent],
+      declarations: [GabinetesComponent, SearchboxComponent],
       providers: [CrudService, MessageService],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SetoresComponent);
+    fixture = TestBed.createComponent(GabinetesComponent);
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000;
+    service = service;
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -53,7 +55,8 @@ describe('SetoresComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should showDialog', async () => {
+  it('should delete', async () => {
+    spyOn(component, 'getAll');
     let itemId = 1;
     component.delete(itemId);
     component.getAll('');
