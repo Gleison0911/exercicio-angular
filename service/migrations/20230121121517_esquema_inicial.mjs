@@ -37,6 +37,7 @@ export const up = async (knex) => {
             tb.timestamps(true, true);
         })
         .createTable("lotacoes", tb => {
+            tb.increments("id");
             tb.integer("pessoas_id").notNullable()
                 .references("pessoas.id").onDelete("cascade");
             tb.integer("gabinetes_id").notNullable()

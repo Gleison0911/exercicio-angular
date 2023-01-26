@@ -1,3 +1,3 @@
-import Router from "@koa/router"
+import Router from "@koa/router";
 
-export const authRouter = new Router()
+export const authRouter = new Router();
