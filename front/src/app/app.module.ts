@@ -23,6 +23,8 @@ import { MessageService } from 'primeng/api';
 import { PaginatorModule } from 'primeng/paginator';
 import { GabinetesComponent } from './pages/gabinetes/gabinetes.component';
 import { LotacoesComponent } from './pages/lotacoes/lotacoes.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -51,8 +53,9 @@ import { LotacoesComponent } from './pages/lotacoes/lotacoes.component';
     ReactiveFormsModule,
     ToastModule,
     PaginatorModule,
+    ConfirmDialogModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

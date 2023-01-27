@@ -1,3 +1,5 @@
+require('dotenv-flow').config();
+
 // Update with your config settings.
 const basic = {
     client: 'better-sqlite3',
@@ -27,6 +29,7 @@ module.exports = {
     production: {
         ...basic,
         client: 'postgresql',
+        // Inserir strings de conexão do arquivo dotenv
         connection: process.env.PG_CONNECTION_URL
     }
 };

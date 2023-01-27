@@ -1,3 +1,17 @@
 <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="setActive($event)"></p-tabMenu>
 <app-sidebar></app-sidebar>
 <router-outlet></router-outlet>
+
+<p-confirmDialog #button [style]="{width: '50vw'}">
+  <ng-template pTemplate="header">
+    <h3>Confirmação</h3>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button type="button" class="bg-red-400 border-none" pButton icon="pi pi-times" label="Não"
+      (click)="button.reject()"></button>
+    <button type="button" class="bg-green-400 border-none" pButton icon="pi pi-check" label="Sim"
+      (click)="button.accept()"></button>
+  </ng-template>
+</p-confirmDialog>
+
+<p-toast key="toastCrud" [showTransitionOptions]="'350ms'" [hideTransitionOptions]="'350ms'"></p-toast>

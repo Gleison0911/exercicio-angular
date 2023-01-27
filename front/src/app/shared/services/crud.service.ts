@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.example';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +11,14 @@ export class CrudService {
   public entity: string | undefined;
   private readonly url: string;
 
-  constructor(private http: HttpClient, public messageService: MessageService) {
+  constructor(
+    private http: HttpClient,
+    public messageService: MessageService,
+    private confirmationService: ConfirmationService,
+  ) {
     this.url = environment.apiUrl || '';
   }
+
   public get(search: string) {
     return this.http.get<any>(`${this.url}${this.entity}?q=${search}`);
   }
@@ -33,10 +38,20 @@ export class CrudService {
     );
   }
 
-  public delete(id: number | null | undefined) {
+  public async delete(id: number | null | undefined) {
     if (!id) {
-      this.errorHandler('Erro ao inserinr registro.');
+      return this.errorHandler('Erro ao inserinr registro.');
     }
+
+    await new Promise((res,rej)=>{
+      this.confirmationService.confirm({
+        icon: 'pi pi-exclamation-triangle',
+        message: 'Tem certeza que deseja excluir esse item? ',
+        accept: () => {
+          res(true);
+        }
+      });
+    })
 
     let result = this.http.delete(`${this.url}${this.entity}` + '/' + id);
     this.messageService.add({
@@ -45,7 +60,7 @@ export class CrudService {
       summary: '',
       detail: 'Dados excluidos com sucesso....',
     });
-    return result;
+    return result.toPromise();
   }
 
   public async save(payload: any) {

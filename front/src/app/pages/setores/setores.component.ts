@@ -51,7 +51,7 @@ export class SetoresComponent {
   }
 
   public async delete(itemId: number) {
-    await this.api.delete(itemId).toPromise();
+    await this.api.delete(itemId);
     this.getAll('');
   }
 
