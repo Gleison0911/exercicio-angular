@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { SearchboxComponent } from 'src/app/shared/searchbox/searchbox.component';
@@ -26,7 +26,7 @@ describe('VarasComponent', () => {
         ReactiveFormsModule
       ],
       declarations: [VarasComponent, SearchboxComponent],
-      providers: [CrudService, MessageService],
+      providers: [CrudService, MessageService, ConfirmationService],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ],

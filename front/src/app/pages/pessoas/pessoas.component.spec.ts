@@ -8,7 +8,7 @@ import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrudService } from 'src/app/shared/services/crud.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('PessoasComponent', () => {
@@ -26,7 +26,7 @@ describe('PessoasComponent', () => {
         ReactiveFormsModule
       ],
       declarations: [PessoasComponent, SearchboxComponent],
-      providers: [CrudService, MessageService],
+      providers: [CrudService, MessageService, ConfirmationService],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ]

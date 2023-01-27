@@ -58,7 +58,7 @@ export class CrudService {
       key: 'toastCrud',
       severity: 'success',
       summary: '',
-      detail: 'Dados excluidos com sucesso....',
+      detail: 'Item excluido com sucesso....',
     });
     return result.toPromise();
   }
